@@ -41,6 +41,7 @@ public class City {
 			gInc = 1;
 			pInc = 3;
 			type = 2;
+			tbonuses = new double[] {0,0,0,0,.1,0};
 			buildings[1] = new Building(name, desc, gCost, popCost, gInc, pInc, type,tbonuses);
 			
 			//Estate
@@ -52,6 +53,7 @@ public class City {
 			gInc = 10;
 			pInc = 1;
 			type = 3;
+			tbonuses = new double[] {0,0,0,0,.05,.05};
 			buildings[2] = new Building(name, desc, gCost, popCost, gInc, pInc, type,tbonuses);
 			
 			//Fishing boat
@@ -62,6 +64,7 @@ public class City {
 			gInc = 8;
 			pInc = 0;
 			type = 4;
+			tbonuses = new double[] {0,0,0,0,0,0};
 			buildings[3] = new Building(name, desc, gCost, popCost, gInc, pInc, type,tbonuses);
 			
 			//Artisan Shops
@@ -72,6 +75,7 @@ public class City {
 			gInc = 13;
 			pInc = 0;
 			type = 5;
+			tbonuses = new double[] {0,0,0,0,0,0};
 			buildings[4] = new Building(name, desc, gCost, popCost, gInc, pInc, type,tbonuses);
 			
 			//Chartered Companies
@@ -83,10 +87,9 @@ public class City {
 			gInc = 200;
 			pInc = 0;
 			type = 6;
+			tbonuses = new double[] {0,0,0,0,0,0};
 			buildings[5] = new Building(name, desc, gCost, popCost, gInc, pInc, type,tbonuses);
-			
-		
-			
+
 		}
 		
 		
@@ -98,9 +101,7 @@ public class City {
 	
 	private void updateBonuses() {
 		for(int type = 0; type < bonuses.length;type++) {
-			for(int building = 0; building < buildings.length; building++) {
-				
-			}
+			int bonus = 
 		}
 	}
 		
