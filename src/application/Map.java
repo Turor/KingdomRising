@@ -14,12 +14,13 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
 
-public class Map extends Group implements EventHandler<MouseEvent> {
+public class Map extends AnchorPane implements EventHandler<MouseEvent> {
 
 	private Button nextDay;
 
@@ -100,8 +101,9 @@ public class Map extends Group implements EventHandler<MouseEvent> {
 		icons[7].setLayoutX(596);
 		icons[7].setLayoutY(320);
 
+		//MainMenu Icon
 		icons[8].setLayoutX(700);
-		icons[8].setLayoutY(4);
+		icons[8].setLayoutY(8);
 		
 		
 		//Resource display box
@@ -112,6 +114,7 @@ public class Map extends Group implements EventHandler<MouseEvent> {
 		overlay.getGraphicsContext2D().fillRect(0, 0, 768, 32);
 		overlay.getGraphicsContext2D().setStroke(Color.BLACK);
 		overlay.getGraphicsContext2D().strokeRect(0, 0, 768, 32);
+		
 		
 		getChildren().add(overlay);
 		
@@ -153,7 +156,8 @@ public class Map extends Group implements EventHandler<MouseEvent> {
 				this.setVisible(false);
 			}
 		}else if(event.getSource().equals(icons[0])) {
-			this.setVisible(false);
+			
+			this.getParent().getChildrenUnmodifiable().get(3).setVisible(true);
 		}
 
 	}

@@ -8,9 +8,6 @@ public class CityContainer extends Group {
 		//Starts hidden
 		this.setVisible(false);
 		
-		//Create all the different city menus
-		CityMenu stormguard = new CityMenu(country.getCity(0));
-		
 		
 	}
 	

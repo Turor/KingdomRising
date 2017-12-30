@@ -13,13 +13,13 @@ public class Controller implements EventHandler<ActionEvent> {
 	
 	private Map map;
 	
-	private CityContainer upgrades;
+
 	
 	private InGameMenu igmenu;
 	
 	private Stage mainStage;
 	
-	public Controller(MainMenu newmenu, Map newMap, CityContainer cityMenu, InGameMenu newigmenu,
+	public Controller(MainMenu newmenu, Map newMap, InGameMenu newigmenu,
 			Stage primaryStage) {
 		
 		mmenu = newmenu;
@@ -32,7 +32,7 @@ public class Controller implements EventHandler<ActionEvent> {
 		
 		
 		map = newMap;
-		upgrades = cityMenu;
+		
 		igmenu = newigmenu;
 		mainStage = primaryStage;
 	}
