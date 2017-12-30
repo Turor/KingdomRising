@@ -17,8 +17,8 @@ public class CityMenu extends Group {
 
 		
 		//Pull the cityscape image
-		//Image picture = new Image("Images/Cityscape/"+index+".jpg");
-		Image picture = new Image("Images/Cityscape/1.jpg");
+		Image picture = new Image("Images/Cityscape/"+index+".jpg");
+		//Image picture = new Image("Images/Cityscape/1.jpg");
 		
 		
 		
