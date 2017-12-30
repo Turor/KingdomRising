@@ -31,7 +31,7 @@ public class CityMenu extends Group {
 		
 		if(picture.getHeight()<picture.getWidth()) {
 			int d = (int)(picture.getWidth()-picture.getHeight());
-			x = d;
+			x = d/2;
 			y = 0;
 			width = (int)picture.getWidth()-d;
 			height = (int)picture.getHeight();
@@ -42,7 +42,7 @@ public class CityMenu extends Group {
 		}else if(picture.getHeight()>picture.getWidth()) {
 			int d = (int)(-picture.getWidth()+picture.getHeight());
 			x = 0;
-			y = (int) (d);
+			y = d/2;
 			width = (int)picture.getWidth();
 			height = (int)(picture.getHeight()-d);
 			
@@ -55,40 +55,10 @@ public class CityMenu extends Group {
 			height = (int)picture.getHeight();
 			pic = new WritableImage(yolo,0,0,width,height);
 		}
-		
-		
-		
-		
+			
 		//Insert the image into an image view
 		ImageView stormguard = new ImageView(pic);
 		System.out.println(pic.getWidth() + " " + pic.getHeight());
-		
-		//Initialize the pointer to the viewport's rectangle
-//		Rectangle2D rect;
-		
-		//Decide whether to crop from top and bottom or left and right
-//		if(picture.getHeight()<picture.getWidth()) {
-//			
-//			double d = (picture.getWidth()-picture.getHeight())/2;
-//			rect = new Rectangle2D(d, 0, picture.getWidth()-d, picture.getHeight());
-//			System.out.print(picture.getWidth() + " " + picture.getHeight() +" "+ (picture.getWidth()-2*d));
-//			
-//		}else if(picture.getHeight()>picture.getWidth()) {
-//			
-//			double d = (picture.getHeight()-picture.getWidth())/2;
-//			rect = new Rectangle2D(0,d,picture.getWidth(),picture.getHeight()-d);
-//			
-//		}else {
-//			
-//			rect = new Rectangle2D(0,0,picture.getWidth(),picture.getHeight());
-//		}
-		//Rectangle2D rect = new Rectangle2D(picture.getWidth()/2-120, 0, 240, 240);
-
-		
-		//Insert the image into an image view
-
-		//ImageView stormguard = new ImageView(picture);
-		
 		
 		if(picture.getWidth() < picture.getHeight())
 			stormguard.setFitWidth(240);
