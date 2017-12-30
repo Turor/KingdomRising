@@ -28,9 +28,11 @@ public class Map extends Group implements EventHandler<MouseEvent> {
 	/**Canvas which contains the game map*/
 	private Canvas graphics;
 	
-	private Text citizens;
+	private Text unemployed;
 	
 	private Text money;
+	
+	private Country country;
 
 
 	/**
@@ -46,9 +48,10 @@ public class Map extends Group implements EventHandler<MouseEvent> {
 	 */
 	private Canvas[] icons;
 
-	public Map() {
+	public Map(Country ncountry) {
 		this.setVisible(false);
-
+		
+		country = ncountry;
 		graphics = new Canvas(768,512);
 		graphics.getGraphicsContext2D().drawImage(new Image("Images/MyrciaNoCities.jpg"), 0, 0);
 		this.getChildren().add(graphics);
@@ -100,21 +103,40 @@ public class Map extends Group implements EventHandler<MouseEvent> {
 		icons[8].setLayoutX(700);
 		icons[8].setLayoutY(4);
 		
-		Canvas overlay = new Canvas(256,32);
-		overlay.getGraphicsContext2D().setFill(Color.ALICEBLUE);
-		overlay.getGraphicsContext2D().fillRect(0, 0, 256, 32);
+		
+		//Resource display box
+		Canvas overlay = new Canvas(768,32);
+		overlay.setLayoutY(480);
+		overlay.setOpacity(.5);
+		overlay.getGraphicsContext2D().setFill(Color.GRAY);
+		overlay.getGraphicsContext2D().fillRect(0, 0, 768, 32);
 		overlay.getGraphicsContext2D().setStroke(Color.BLACK);
-		overlay.getGraphicsContext2D().strokeRect(0, 0, 256, 32);
+		overlay.getGraphicsContext2D().strokeRect(0, 0, 768, 32);
 		
 		getChildren().add(overlay);
 		
-		citizens = new Text(""+100);
-		citizens.setFont(Font.font("Lucida Calligraphy", FontPosture.REGULAR,24));
-		citizens.setFill(Color.BLACK);
-		citizens.setLayoutX(64);
-		citizens.setLayoutY(22);
-		citizens.setEffect(new DropShadow(5, 3, 3, Color.BLACK));	
-		getChildren().add(citizens);
+		//Citizen display
+		unemployed = new Text("Pop: "+country.getUnemployed());
+		unemployed.setFont(Font.font("Lucida Calligraphy", FontPosture.REGULAR,24));
+		unemployed.setFill(Color.BLACK);
+		unemployed.setLayoutX(192);
+		unemployed.setLayoutY(504);
+		//unemployed.setEffect(new DropShadow(2, 3, 3, Color.ALICEBLUE));	
+		getChildren().add(unemployed);
+		
+		//Money display
+		money = new Text("Money: "+ country.getCapital());
+		money.setFont(Font.font("Lucida Calligraphy", FontPosture.REGULAR,24));
+		money.setFill(Color.BLACK);
+		money.setLayoutX(8);
+		money.setLayoutY(504);
+		//money.setEffect(new DropShadow(2,3,3,Color.ALICEBLUE));
+		getChildren().add(money);
+		
+		
+		
+		
+		
 		
 		
 	}
@@ -130,6 +152,8 @@ public class Map extends Group implements EventHandler<MouseEvent> {
 				this.getParent().getChildrenUnmodifiable().get(0).setVisible(true);
 				this.setVisible(false);
 			}
+		}else if(event.getSource().equals(icons[0])) {
+			this.setVisible(false);
 		}
 
 	}

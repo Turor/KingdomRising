@@ -42,18 +42,35 @@ public class Building {
 	/**The number of this type of building in town*/
 	private int count;
 	
-	/**To what degree this building affects the other types of buildings*/
-	private double[] bonusFactor;
+	/**To what degree this building affects the gold income of the other types  of buildings*/
+	private double[] mBonusFactor;
+	
+	/**To what degree this building affects the growth of the other types of buildings*/
+	private double[] pBonusFactor;
+	
+	/**The current bonus this building is providing to the other buildings in the city*/
+	private double[] currentMBonus;
+	
+	/**The current growth bonus this building is providing*/
+	private double[] currentPBonus;
 	
 	public Building(String nName, String nDesc, int nCost, int pCost, int ngIncome,
-			int npIncome, int nType, double[] nBonusFactor) {
+			int npIncome, int nType, double[] nMBonusFactor, double[] npBonusFactor) {
+		
 		name = nName;
 		description = nDesc;
 		cost = nCost;
 		popcost = pCost;
 		gIncome = ngIncome;
 		pIncome = npIncome;
-		bonusFactor = nBonusFactor;
+		mBonusFactor = nMBonusFactor;
+		pBonusFactor = npBonusFactor;
+		currentMBonus = new double[] {0,0,0,0,0,0};
+		currentPBonus = new double[] {0,0,0,0,0,0};
+		for(int i = 0; i < currentPBonus.length;i++) {
+			currentPBonus[i] = currentPBonus[i]+pBonusFactor[i];
+			currentMBonus[i] = currentMBonus[i]+mBonusFactor[i];
+		}
 		
 		type = nType;
 		costMultiplier = 1.01;
@@ -73,8 +90,28 @@ public class Building {
 				money = money-cost;
 				people = people-popcost;
 				cost = (int)Math.ceil(cost*costMultiplier);
+				updateBonus(true);
+				
 			}
 		}
+	}
+	
+	/**
+	 * Method to update the bonus provided by this building. True for when the building is being bought
+	 * false otherwise
+	 * @param buying Whether or not the building has just been bought
+	 */
+	private void updateBonus(boolean buying) {
+		if(buying)
+			for(int i = 0; i < pBonusFactor.length;i++) {
+				currentPBonus[i] = currentPBonus[i]+pBonusFactor[i];
+				currentMBonus[i] = currentMBonus[i]+mBonusFactor[i];
+			}
+		else
+			for(int i = 0; i < pBonusFactor.length;i++) {
+				currentPBonus[i] = currentPBonus[i]-pBonusFactor[i];
+				currentMBonus[i] = currentMBonus[i]-mBonusFactor[i];
+			}
 	}
 	
 	/**
@@ -88,6 +125,7 @@ public class Building {
 			money = money - cost;
 			people = people - popcost;
 			cost = (int)Math.ceil(costMultiplier*cost);
+			updateBonus(true);
 		}
 	}
 	
@@ -127,4 +165,22 @@ public class Building {
 	public String getDescription() {
 		return description;
 	}
+	
+	/**
+	 * Method which returns the pointer to this building's current growth bonus factor
+	 * @return The bonus factor this building is providing for growth
+	 */
+	public double[] getPBonus() {
+		return currentPBonus;
+	}
+	
+	/**
+	 * Method which returns the pointer to this building's current money bonus factors
+	 * @return The bonus factor this building is providing for money
+	 */
+	public double[] getMBonus() {
+		return currentMBonus;
+	}
+	
+	
 }

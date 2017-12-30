@@ -18,17 +18,28 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			/*
+			 * Root Directory Info
+			 * -------------------
+			 * MainMenu 	=	0
+			 * Map 			= 	1
+			 * InGameMenu	=	2
+			 * CityMenu		=	3
+			 * 
+			 */
 			Group root = new Group();
+			Country country = new Country();
 			
 			MainMenu menu = new MainMenu();
-			Map map = new Map();
-			Upgrades upgrade = new Upgrades();
+			Map map = new Map(country);
 			InGameMenu igMenu = new InGameMenu();
 			
+			//Instantiate all the city menus
+			CityContainer cityMenu = new CityContainer(country);
 			
-			Controller control = new Controller(menu, map, upgrade, igMenu,primaryStage);
+			Controller control = new Controller(menu, map, cityMenu, igMenu,primaryStage);
 			
-			root.getChildren().addAll(menu,map,upgrade,igMenu);
+			root.getChildren().addAll(menu,map,igMenu,cityMenu);
 			
 			Scene scene = new Scene(root,768,512);
 			
