@@ -1,4 +1,4 @@
-package application;
+package model;
 
 public class Building {
 	
@@ -22,6 +22,9 @@ public class Building {
 	
 	/**How much the building cost increases per building in the town*/
 	private double costMultiplier;
+	
+	/**The path to where the image will be*/
+	private String imagePath;
 	
 	/**
 	 * The type identifier for this building
@@ -180,6 +183,14 @@ public class Building {
 	 */
 	public double[] getMBonus() {
 		return currentMBonus;
+	}
+	
+	public int getGCost() {
+		return cost;
+	}
+	
+	public int getPCost() {
+		return popcost;
 	}
 	
 	

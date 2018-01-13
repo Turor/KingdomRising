@@ -19,6 +19,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
+import model.Country;
 
 public class Map extends AnchorPane implements EventHandler<MouseEvent> {
 

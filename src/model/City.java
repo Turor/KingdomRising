@@ -1,4 +1,4 @@
-package application;
+package model;
 
 import java.util.ArrayList;
 
@@ -105,7 +105,7 @@ public class City {
 			normalizeArray(pBonuses,0);
 			
 			//Artisan Shops
-			name = "Artisan Shops";
+			name = "Artisan Shop";
 			desc = "These shops are owned by artisans who sell their crafts.";
 			gCost = 20;
 			popCost = 3;
@@ -119,7 +119,7 @@ public class City {
 			normalizeArray(pBonuses,0);
 			
 			//Chartered Companies
-			name = "Chartered Companies";
+			name = "Chartered Company";
 			desc = "A chartered company is one which possesses a Royal charter, giving"
 					+ " the company the right to act with the authority of the Royal family.";
 			gCost = 250;

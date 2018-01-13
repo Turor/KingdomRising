@@ -1,1 +1,51 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+
+.tab-pane>.tab-header-area>.tab-header-background{
+	-fx-opacity:0;
+}
+
+
+
+.tab-pane .tab{
+	-fx-background-color:rgb(235, 235, 255);
+}
+
+.tab-pane:top *.tab-header-area {
+    -fx-background-insets: 0, 0 0 0 0;
+    -fx-padding: 0.416667em 0.166667em 0.0em 0.0em; 
+}
+
+.tab:selected{
+	-fx-background-insets: 0 1 0 1,0,0;
+
+}
+
+.name{
+	
+	-fx-fill:rgb(235,235,255);
+}
+
+.text-field {
+    -fx-background-color: rgb(195,195,195) ;
+    -fx-background-insets: 4 6 5 6;
+    -fx-background-radius: 0 ;
+    -fx-alignment:  center ;
+    -fx-cursor:default ;
+
+    
+    
+}
+
+.text-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+}
+
+.overlay{
+	-fx-blend-mode:screen ;
+}
+
+.cost{
+	-fx-fill: Red;
+}
+
